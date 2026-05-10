@@ -21,7 +21,7 @@ app.get('/', async (req, res) => {
         const [sites] = await pool.query("SELECT * FROM fe_comic_sites");
         // creates the random comic variable
         const [randomComic] = await pool.query("SELECT * FROM fe_comics ORDER BY RAND() LIMIT 1");
-        // res.render loads an ejs page
+        // res.render loads an ejs page in this case 'index', then it loads sites and randomComic: randomComic[0]
         res.render('index', { sites, randomComic: randomComic[0]});
         // catchs errors async functions needs a try catch block
     } catch (err) {
@@ -31,7 +31,7 @@ app.get('/', async (req, res) => {
 });
 
 
-// get route runs when the user enters the page
+// get route runs when the user enters the page: routes for the Add comic to database requirement
 app.get('/addComic', async (req, res) =>{
     try{
         // 
@@ -61,7 +61,7 @@ app.post('/addComic', async (req, res) => {
 
     }
 });
-
+// route for the get random comic button requirement
 app.get('/randomComic', async (req, res) => {
     try{
         const [randomComic] = await pool.query("SELECT * FROM fe_comics ORDER BY RAND() LIMIT 1");
