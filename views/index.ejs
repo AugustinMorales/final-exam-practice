@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<h1>Comic Sites</h1>
+
+
+<%# the href is reffering to /addComic which is used in index.mjs  %>
+<a href="/addComic"><button>Add Comic</button></a>
+
+
+<%# loops through the sites array %>
+<% sites.forEach(site => { %>
+    <div>
+        <%#  site.comSiteUrl comes from the fe_comic_sites table go to phpMyAdmin and look at the table the values are the column names%>
+        <h2><a href="<%= site.comicSiteUrl %>" target="_blank"> <%= site.comicSiteName %></a></h2>
+        <a href="<%= site.comicSiteUrl %>" target="_blank"><%= site.comicSiteUrl %></a>
+    </div>
+<% }) %>
+
+<h2>Random Comic</h2>
+<img id="randomImg" src="<%= randomComic.comicUrl %>" alt="<%= randomComic.comicTitle %>">
+<p id="randomTitle"><%= randomComic.comicTitle %></p>
+
+<button onclick="getRandomComic()">Display Random Comic</button>
+
+
+
+<%- include('partials/footer') %>

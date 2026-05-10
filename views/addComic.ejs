@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<h1>Add a New Comic</h1>
+
+<form action="/addComic" method="POST">
+
+    <label>Comic Title</label>
+    <input type="text" name="comicTitle" required>
+
+    <label>Comic URL</label>
+    <input type="text" name="comicUrl" required>
+
+    <label>Comic Date</label>
+    <input type="date" name="comicDate" required>
+
+    <label>Comic Site</label>
+    <select name="comicSiteId">
+        <% sites.forEach(site => { %>
+            <option value="<%= site.comicSiteId %>"><%= site.comicSiteName %></option>
+        <% }) %>
+    </select>
+
+    <button type="submit">Add Comic</button>
+
+</form>
+
+<%- include('partials/footer') %>
